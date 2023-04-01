@@ -84,7 +84,10 @@ class GMM():
                 tot += self.pi[i] * multivariate_normal.pdf(d, mean=self.mu[i], cov=self.sigma[i])
             ll.append(np.log(tot))
         return np.sum(ll)
-    
+     
+        
+    #从平均值和协方差绘制一个高斯。使用matplotlib.patches模块中的Ellipse类来绘制一个具有给定平均值和协方差的椭圆。
+    #然后用一个仿生变换矩阵对椭圆进行变换，将其缩放、旋转和平移到所需的位置。最后，使用add_patch方法将转换后的椭圆添加到给定的轴对象中。  
     def plot_gaussian(self, mean, cov, ax, n_std=3.0, facecolor='none', **kwargs):
         '''
         Utility function to plot one Gaussian from mean and covariance.
@@ -107,6 +110,8 @@ class GMM():
             .translate(mean_x, mean_y)
         ellipse.set_transform(transf + ax.transData)
         return ax.add_patch(ellipse)
+    
+
 
     def draw(self, ax, n_std=2.0, facecolor='none', **kwargs):
         '''
