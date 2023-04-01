@@ -93,8 +93,9 @@ class GMM():
         Utility function to plot one Gaussian from mean and covariance.
         '''
         pearson = cov[0, 1]/np.sqrt(cov[0, 0] * cov[1, 1])
-        ell_radius_x = np.sqrt(1 + pearson)
-        ell_radius_y = np.sqrt(1 - pearson)
+        ell_radius_x = np.sqrt(1 + pearson)      #这段代码计算了与二维高斯分布的x轴和y轴对齐的椭圆的半径。pearson变量计算出分布的两个维度之间的相关系数。
+                                                    #ell_radius_x和ell_radius_y变量分别计算椭圆沿x轴和y轴的半径。
+        ell_radius_y = np.sqrt(1 - pearson)        
         ellipse = Ellipse((0, 0),
             width=ell_radius_x * 2,
             height=ell_radius_y * 2,
